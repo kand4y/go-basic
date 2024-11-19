@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+
+	"github.com/joho/godotenv"
+)
 
 func main() {
 	fmt.Println("Hello, World")
@@ -20,4 +25,9 @@ func fizz_buzz() {
 			fmt.Println(i)
 		}
 	}
+}
+
+func test_env() {
+	godotenv.Load()
+	fmt.Println(os.Getenv("GO_ENV"))
 }
