@@ -11,6 +11,7 @@ func main() {
 	fmt.Println("Hello, World")
 
 	fizz_buzz()
+	test_env()
 }
 
 func fizz_buzz() {
