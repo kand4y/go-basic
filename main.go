@@ -4,8 +4,19 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"unsafe"
 
 	"github.com/joho/godotenv"
+)
+
+const the_readonly = "omg"
+
+type fruits int
+
+const (
+	banana fruits = iota + 1
+	apple
+	mango
 )
 
 func main() {
@@ -17,7 +28,24 @@ func main() {
 	var i int = 4
 	fmt.Printf("i: %v %T\n", i, i)
 
-	simple_http()
+	fmt.Printf("banana:%v apple:%v mango:%v \n", banana, apple, mango)
+
+	// ポインタ変数
+	var ui1 uint16
+	fmt.Printf("value of ui1: %v \n", ui1)
+
+	var p1 *uint16
+	fmt.Printf("value of p1: %v \n", p1)
+
+	p1 = &ui1
+	fmt.Printf("value of p1: %v \n", p1)
+	fmt.Printf("size of p1: %d[byte] \n", unsafe.Sizeof(p1))
+	fmt.Printf("memory address of p1: %p \n", &p1)
+
+	fmt.Printf("value of ui1(dereference): %v \n", *p1)
+	*p1 = 1
+	fmt.Printf("value of ui1: %v \n", ui1)
+	//simple_http()
 }
 
 func fizz_buzz() {
